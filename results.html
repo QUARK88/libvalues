@@ -61,6 +61,20 @@
     <div class="bar v12" id="bar-v12"><div class="text-wrapper" id="v12"></div></div>
     <img id="img-v12" src="value_images/v12.png" height="128pt"/>
 </div>
+<h2> Axis : <span class="weight-300" id="b7"></span></h2>
+<div class="axis">
+    <img id="img-v13" src="value_images/v13.png" height="128pt"/>
+    <div class="bar v13" id="bar-v13"><div class="text-wrapper" id="v13"></div></div>
+    <div class="bar v14" id="bar-v14"><div class="text-wrapper" id="v14"></div></div>
+    <img id="img-v14" src="value_images/v14.png" height="128pt"/>
+</div>
+<h2> Axis : <span class="weight-300" id="b8"></span></h2>
+<div class="axis">
+    <img id="img-v15" src="value_images/v15.png" height="128pt"/>
+    <div class="bar v15" id="bar-v15"><div class="text-wrapper" id="v15"></div></div>
+    <div class="bar v16" id="bar-v16"><div class="text-wrapper" id="v16"></div></div>
+    <img id="img-v16" src="value_images/v16.png" height="128pt"/>
+</div>
 <h2>Closest Match : <span class="weight-300" id="ideology-label"></span></h2>
 <p>The closest match is currently a work in progress.</p>
 <p>If you have any suggestions, join our Discord server.</p>
@@ -95,6 +109,8 @@
     b4Array = ["","","","","","",""]
     b5Array = ["","","","","","",""]
     b6Array = ["","","","","","",""]
+    b7Array = ["","","","","","",""]
+    b8Array = ["","","","","","",""]
 
     function setLabel(val,ary) {
         if (val > 100) { return "" } else
@@ -120,6 +136,8 @@
     v8 = (100 - v7).toFixed(1)
     v10 = (100 - v9).toFixed(1)
     v12 = (100 - v11).toFixed(1)
+    v14 = (100 - v13).toFixed(1)
+    v16 = (100 - v15).toFixed(1)
 
     setBarValue("v1", v1)
     setBarValue("v2", v2)
@@ -133,6 +151,10 @@
     setBarValue("v10", v10)
     setBarValue("v11", v11)
     setBarValue("v12", v12)
+    setBarValue("v13", v13)
+    setBarValue("v14", v14)
+    setBarValue("v15", v15)
+    setBarValue("v16", v16)
 
     document.getElementById("b1").innerHTML = setLabel(v1, b1Array)
     document.getElementById("b2").innerHTML = setLabel(v3, b2Array)
@@ -140,6 +162,8 @@
     document.getElementById("b4").innerHTML = setLabel(v7, b4Array)
     document.getElementById("b5").innerHTML = setLabel(v9, b5Array)
     document.getElementById("b6").innerHTML = setLabel(v11, b6Array)
+    document.getElementById("b7").innerHTML = setLabel(v13, b7Array)
+    document.getElementById("b8").innerHTML = setLabel(v15, b8Array)
 
     ideology = ""
     ideodist = Infinity
@@ -151,6 +175,7 @@
         dist += (Math.abs(ideologies[i].stats.b4 - v7)**2)*1
         dist += (Math.abs(ideologies[i].stats.b5 - v9)**2)*1
         dist += (Math.abs(ideologies[i].stats.b6 - v11)**2)*1
+        dist += (Math.abs(ideologies[i].stats.b7 - v13)**2)*1
         if (dist < ideodist) {
             ideology = ideologies[i].name
             ideodist = dist
@@ -198,6 +223,14 @@
         ctx.drawImage(img, 20, 770, 100, 100);
         img = document.getElementById("img-v12")
         ctx.drawImage(img, 680, 770, 100, 100)
+        img = document.getElementById("img-v13")
+        ctx.drawImage(img, 20, 890, 100, 100)
+        img = document.getElementById("img-v14")
+        ctx.drawImage(img, 680, 890, 100, 100)
+        img = document.getElementById("img-v15")
+        ctx.drawImage(img, 20, 1010, 100, 100);
+        img = document.getElementById("img-v16")
+        ctx.drawImage(img, 680, 1010, 100, 100)
 
         ctx.fillStyle="#000000"
         ctx.fillRect(120, 185, 560, 70)
@@ -206,6 +239,8 @@
         ctx.fillRect(120, 545, 560, 70)
         ctx.fillRect(120, 665, 560, 70)
         ctx.fillRect(120, 785, 560, 70)
+        ctx.fillRect(120, 905, 560, 70)
+        ctx.fillRect(120, 1025, 560, 70)
         ctx.fillStyle="#000000"
         ctx.fillRect(120, 189, 5.6*v1-2, 62)
         ctx.fillStyle="#000000"
@@ -231,6 +266,14 @@
         ctx.fillStyle="#000000"
 	ctx.fillRect(682-5.6*v12, 789, 5.6*v12-2, 62)
         ctx.fillStyle="#000000"
+        ctx.fillRect(120, 909, 5.6*v13-2, 62)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(682-5.6*v14, 909, 5.6*v14-2, 62)
+        ctx.fillStyle="#000000"
+        ctx.fillRect(120, 1029, 5.6*v15-2, 62)
+        ctx.fillStyle="#000000"
+	ctx.fillRect(682-5.6*v16, 1029, 5.6*v16-2, 62)
+        ctx.fillStyle="#000000"
         ctx.font="700 50px Montserrat"
         ctx.textAlign="left"
         ctx.fillText("LibValues", 20, 70)
@@ -244,6 +287,8 @@
         if (v7 >= 25) {ctx.fillText(v7 + "%", 130, 592.5)}
         if (v9 >= 25) {ctx.fillText(v9 + "%", 130, 712.5)}
         if (v11 >= 25) {ctx.fillText(v11 + "%", 130, 832.5)}
+        if (v13 >= 25) {ctx.fillText(v13 + "%", 130, 952.5)}
+        if (v15 >= 25) {ctx.fillText(v15 + "%", 130, 1072.5)}
         ctx.textAlign="right"
         if (v2 >= 25) {ctx.fillText(v2 + "%", 670, 232.5)}
         if (v4 >= 25) {ctx.fillText(v4 + "%", 670, 352.5)}
@@ -251,6 +296,8 @@
         if (v8 >= 25) {ctx.fillText(v8 + "%", 670, 592.5)}
         if (v10 >= 25) {ctx.fillText(v10 + "%", 670, 712.5)}
         if (v12 >= 25) {ctx.fillText(v12 + "%", 670, 832.5)}
+        if (v14 >= 25) {ctx.fillText(v14 + "%", 670, 952.5)}
+        if (v16 >= 25) {ctx.fillText(v16 + "%", 670, 1072.5)}
 
         ctx.font="300 30px Montserrat"
 	ctx.fillText("Made by Lord Atom#7729", 780, 80)
@@ -261,6 +308,8 @@
         ctx.fillText(" Axis : " + document.getElementById("b4").innerHTML, 400, 535)
         ctx.fillText(" Axis : " + document.getElementById("b5").innerHTML, 400, 655)
         ctx.fillText(" Axis : " + document.getElementById("b6").innerHTML, 400, 775)
+        ctx.fillText(" Axis : " + document.getElementById("b5").innerHTML, 400, 895)
+        ctx.fillText(" Axis : " + document.getElementById("b6").innerHTML, 400, 1015)
 
         document.getElementById("banner").src = c.toDataURL();
     }
