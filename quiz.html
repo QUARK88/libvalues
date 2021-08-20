@@ -30,10 +30,10 @@
 <button class="small_button_off" id="back_button_off">Back</button><br>
 
 <script>
-    var max_b1, max_b2, max_b3, max_b4, max_b5, max_b6; // Max possible scores
-    max_b1 = max_b2 = max_b3 = max_b4 = max_b5 = max_b6 = 0;
-    var b1, b2, b3, b4, b5, b6; // User's scores
-    b1 = b2 = b3 = b4 = b5 = b6 = 0;
+    var max_b1, max_b2, max_b3, max_b4, max_b5, max_b6, max_b7, max_b8; // Max possible scores
+    max_b1 = max_b2 = max_b3 = max_b4 = max_b5 = max_b6 = max_b7 = max_b8 = 0;
+    var b1, b2, b3, b4, b5, b6, b7, b8; // User's scores
+    b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = 0;
     var qn = 0; // Question number
     var prev_answer = null;
     init_question();
@@ -44,6 +44,8 @@
         max_b4 += Math.abs(questions[i].effect.b4)
         max_b5 += Math.abs(questions[i].effect.b5)
         max_b6 += Math.abs(questions[i].effect.b6)
+        max_b7 += Math.abs(questions[i].effect.b7)
+        max_b8 += Math.abs(questions[i].effect.b8)
     }
     function init_question() {
         document.getElementById("question-text").innerHTML = questions[qn].question;
@@ -65,6 +67,8 @@
         b4 += mult*questions[qn].effect.b4
         b5 += mult*questions[qn].effect.b5
         b6 += mult*questions[qn].effect.b6
+        b7 += mult*questions[qn].effect.b7
+        b8 += mult*questions[qn].effect.b8
         qn++;
         prev_answer = mult;
         if (qn < questions.length) {
@@ -84,6 +88,8 @@
         b4 -= prev_answer * questions[qn].effect.b4;
         b5 -= prev_answer * questions[qn].effect.b5;
         b6 -= prev_answer * questions[qn].effect.b6;
+        b7 -= prev_answer * questions[qn].effect.b7;
+        b8 -= prev_answer * questions[qn].effect.b8;
         prev_answer = null;
         init_question();
 
@@ -99,6 +105,8 @@
             + `&v7=${calc_score(b4,max_b4)}`
             + `&v9=${calc_score(b5,max_b5)}`
             + `&v11=${calc_score(b6,max_b6)}`
+            + `&v13=${calc_score(b7,max_b7)}`
+            + `&v15=${calc_score(b8,max_b8)}`
     }
 </script>
 </body>
