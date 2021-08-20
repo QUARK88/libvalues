@@ -1,7 +1,7 @@
 <head>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
 <link href='style.css' rel='stylesheet' type='text/css'>
-<title>DozenValues Results</title>
+<title>LibValues Results</title>
 <link rel="icon" type="x-icon" href="icon.png">
 <link rel="shortcut icon" type="x-icon" href="icon.png">
 <meta charset="utf-8">
@@ -19,42 +19,42 @@
 
 <h1>Results</h1>
 
-<h2>Ownership Axis : <span class="weight-300" id="b1"></span></h2>
+<h2> Axis : <span class="weight-300" id="b1"></span></h2>
 <div class="axis">
     <img id="img-v1" src="value_images/v1.png" height="128pt"/>
     <div class="bar v1" id="bar-v1"><div class="text-wrapper" id="v1"></div></div>
     <div class="bar v2" id="bar-v2"><div class="text-wrapper" id="v2"></div></div>
     <img id="img-v2" src="value_images/v2.png" height="128pt"/>
 </div>
-<h2>Market Axis : <span class="weight-300" id="b2"></span></h2>
+<h2> Axis : <span class="weight-300" id="b2"></span></h2>
 <div class="axis">
     <img id="img-v3" src="value_images/v3.png" height="128pt"/>
     <div class="bar v3" id="bar-v3"><div class="text-wrapper" id="v3"></div></div>
     <div class="bar v4" id="bar-v4"><div class="text-wrapper" id="v4"></div></div>
     <img id="img-v4" src="value_images/v4.png" height="128pt"/>
 </div>
-<h2>Power Axis : <span class="weight-300" id="b3"></span></h2>
+<h2> Axis : <span class="weight-300" id="b3"></span></h2>
 <div class="axis">
     <img id="img-v5" src="value_images/v5.png" height="128pt"/>
     <div class="bar v5" id="bar-v5"><div class="text-wrapper" id="v5"></div></div>
     <div class="bar v6" id="bar-v6"><div class="text-wrapper" id="v6"></div></div>
     <img id="img-v6" src="value_images/v6.png" height="128pt"/>
 </div>
-<h2>Autonomy Axis : <span class="weight-300" id="b4"></span></h2>
+<h2> Axis : <span class="weight-300" id="b4"></span></h2>
 <div class="axis">
     <img id="img-v7" src="value_images/v7.png" height="128pt"/>
     <div class="bar v7" id="bar-v7"><div class="text-wrapper" id="v7"></div></div>
     <div class="bar v8" id="bar-v8"><div class="text-wrapper" id="v8"></div></div>
     <img id="img-v8" src="value_images/v8.png" height="128pt"/>
 </div>
-<h2>Identity Axis : <span class="weight-300" id="b5"></span></h2>
+<h2> Axis : <span class="weight-300" id="b5"></span></h2>
 <div class="axis">
     <img id="img-v9" src="value_images/v9.png" height="128pt"/>
     <div class="bar v9" id="bar-v9"><div class="text-wrapper" id="v9"></div></div>
     <div class="bar v10" id="bar-v10"><div class="text-wrapper" id="v10"></div></div>
     <img id="img-v10" src="value_images/v10.png" height="128pt"/>
 </div>
-<h2>Progress Axis : <span class="weight-300" id="b6"></span></h2>
+<h2> Axis : <span class="weight-300" id="b6"></span></h2>
 <div class="axis">
     <img id="img-v11" src="value_images/v11.png" height="128pt"/>
     <div class="bar v11" id="bar-v11"><div class="text-wrapper" id="v11"></div></div>
@@ -89,12 +89,12 @@
         }
     }
 
-    b1Array = ["Communist","Socialist","Collective","Syncretic","Individual","Private","Propertarian"]
-    b2Array = ["Planned","Directed","Regulated","Intervening","Permissive","Free Market","Laissez Faire "]
-    b3Array = ["Autocratic","Concentrated","Unified","Representative","Dispersed","Decentral","Anarchist"]
-    b4Array = ["Emancipatory","Tolerant","Lenient","Limiting","Restrictive","Controlling","Brutal"]
-    b5Array = ["Intersectional","Inclusive","Respectful","Normative","Prejudicial","Discriminatory","Supremacist"]
-    b6Array = ["Antiquated","Traditional","Conservative","Conventional","Neoteric","Progressive","Futuristic"]
+    b1Array = ["","","","","","",""]
+    b2Array = ["","","","","","",""]
+    b3Array = ["","","","","","",""]
+    b4Array = ["","","","","","",""]
+    b5Array = ["","","","","","",""]
+    b6Array = ["","","","","","",""]
 
     function setLabel(val,ary) {
         if (val > 100) { return "" } else
@@ -145,16 +145,15 @@
     ideodist = Infinity
     for (var i = 0; i < ideologies.length; i++) {
         dist = 0
-        dist += Math.abs(ideologies[i].stats.b1 - v1)*1
-        dist += Math.abs(ideologies[i].stats.b2 - v3)*0.95
-        dist += Math.abs(ideologies[i].stats.b3 - v5)*1
-        dist += Math.abs(ideologies[i].stats.b4 - v7)*0.5
-        dist += Math.abs(ideologies[i].stats.b5 - v9)*0.6
-        dist += Math.abs(ideologies[i].stats.b6 - v11)*0.6
+        dist += (Math.abs(ideologies[i].stats.b1 - v1)**2)*1
+        dist += (Math.abs(ideologies[i].stats.b2 - v3)**2)*1
+        dist += (Math.abs(ideologies[i].stats.b3 - v5)**2)*1
+        dist += (Math.abs(ideologies[i].stats.b4 - v7)**2)*1
+        dist += (Math.abs(ideologies[i].stats.b5 - v9)**2)*1
+        dist += (Math.abs(ideologies[i].stats.b6 - v11)**2)*1
         if (dist < ideodist) {
             ideology = ideologies[i].name
             ideodist = dist
-            ideomatch = Math.round(100-100*(ideodist/260))
         }
     }
     document.getElementById("ideology-label").innerHTML = ideology
@@ -207,34 +206,34 @@
         ctx.fillRect(120, 545, 560, 70)
         ctx.fillRect(120, 665, 560, 70)
         ctx.fillRect(120, 785, 560, 70)
-        ctx.fillStyle="#ff0c57"
+        ctx.fillStyle="#000000"
         ctx.fillRect(120, 189, 5.6*v1-2, 62)
-        ctx.fillStyle="#1fe545"
+        ctx.fillStyle="#000000"
         ctx.fillRect(682-5.6*v2, 189, 5.6*v2-2, 62)
-        ctx.fillStyle="#b900d3"
+        ctx.fillStyle="#000000"
         ctx.fillRect(120, 309, 5.6*v3-2, 62)
-        ctx.fillStyle="#ffc100"
+        ctx.fillStyle="#000000"
         ctx.fillRect(682-5.6*v4, 309, 5.6*v4-2, 62)
-        ctx.fillStyle="#0cd1a5"
+        ctx.fillStyle="#000000"
         ctx.fillRect(120, 429, 5.6*v5-2, 62)
-        ctx.fillStyle="#ff3a17"
+        ctx.fillStyle="#000000"
         ctx.fillRect(682-5.6*v6, 429, 5.6*v6-2, 62)
-        ctx.fillStyle="#ffff00"
+        ctx.fillStyle="#000000"
         ctx.fillRect(120, 549, 5.6*v7-2, 62)
-        ctx.fillStyle="#2876ff"
+        ctx.fillStyle="#000000"
         ctx.fillRect(682-5.6*v8, 549, 5.6*v8-2, 62)
-        ctx.fillStyle="#ff15a8"
+        ctx.fillStyle="#000000"
         ctx.fillRect(120, 669, 5.6*v9-2, 62)
-        ctx.fillStyle="#ff7b09"
+        ctx.fillStyle="#000000"
         ctx.fillRect(682-5.6*v10, 669, 5.6*v10-2, 62)
-        ctx.fillStyle="#9bf122"
+        ctx.fillStyle="#000000"
         ctx.fillRect(120, 789, 5.6*v11-2, 62)
-        ctx.fillStyle="#894efa"
+        ctx.fillStyle="#000000"
 	ctx.fillRect(682-5.6*v12, 789, 5.6*v12-2, 62)
         ctx.fillStyle="#000000"
         ctx.font="700 50px Montserrat"
         ctx.textAlign="left"
-        ctx.fillText("DozenValues", 20, 70)
+        ctx.fillText("LibValues", 20, 70)
         ctx.font="30px Montserrat"
         ctx.fillText(ideology, 20, 120)
 
@@ -254,14 +253,14 @@
         if (v12 >= 25) {ctx.fillText(v12 + "%", 670, 832.5)}
 
         ctx.font="300 30px Montserrat"
-	ctx.fillText("Made by Solar#5896", 780, 80)
+	ctx.fillText("Made by Lord Atom#7729", 780, 80)
         ctx.textAlign="center"
-        ctx.fillText("Ownership Axis: " + document.getElementById("b1").innerHTML, 400, 175)
-        ctx.fillText("Market Axis : " + document.getElementById("b2").innerHTML, 400, 295)
-        ctx.fillText("Power Axis : " + document.getElementById("b3").innerHTML, 400, 415)
-        ctx.fillText("Autonomy Axis : " + document.getElementById("b4").innerHTML, 400, 535)
-        ctx.fillText("Identity Axis : " + document.getElementById("b5").innerHTML, 400, 655)
-        ctx.fillText("Progress Axis : " + document.getElementById("b6").innerHTML, 400, 775)
+        ctx.fillText(" Axis: " + document.getElementById("b1").innerHTML, 400, 175)
+        ctx.fillText(" Axis : " + document.getElementById("b2").innerHTML, 400, 295)
+        ctx.fillText(" Axis : " + document.getElementById("b3").innerHTML, 400, 415)
+        ctx.fillText(" Axis : " + document.getElementById("b4").innerHTML, 400, 535)
+        ctx.fillText(" Axis : " + document.getElementById("b5").innerHTML, 400, 655)
+        ctx.fillText(" Axis : " + document.getElementById("b6").innerHTML, 400, 775)
 
         document.getElementById("banner").src = c.toDataURL();
     }
